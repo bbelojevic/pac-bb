@@ -2,21 +2,21 @@
 
 # While developing stack was used
 
-Windows 10 + HyperV
-minikube v1.11.0 on Microsoft Windows 10 Pro 10.0.18363 Build 18363
-Kubernetes v1.18.3 on Docker 19.03.8
-Enabled addons: dashboard, default-storageclass, freshpod, ingress, metrics-server, storage-provisioner
+- Windows 10 + HyperV
+- minikube v1.11.0 on Microsoft Windows 10 Pro 10.0.18363 Build 18363
+- Kubernetes v1.18.3 on Docker 19.03.8
+- Enabled addons: dashboard, default-storageclass, freshpod, ingress, metrics-server, storage-provisioner
 
 minikube config view
 - cpus: 4
 - disk-size: 100g
 - memory: 6000
 
-java 8
-lombok 1.8.12
-node.js v8.10.0
-npm 5.6.0
-maven 3.5.2
+- java 8
+- lombok 1.8.12
+- node.js v8.10.0
+- npm 5.6.0
+- maven 3.5.2
 
 
 # neo4j
