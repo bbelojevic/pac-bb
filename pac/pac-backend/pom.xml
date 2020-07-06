@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+        <dockerfile-maven-version>1.4.3</dockerfile-maven-version>
 	</properties>
 
 	<dependencies>
@@ -75,6 +76,28 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+			    <groupId>com.spotify</groupId>
+			    <artifactId>dockerfile-maven-plugin</artifactId>
+			    <version>${dockerfile-maven-version}</version>
+			    <executions>
+			        <execution>
+			          <id>default</id>
+			          <goals>
+			            <goal>build</goal>
+			            <goal>push</goal>
+			          </goals>
+			        </execution>
+			    </executions>
+			    <configuration>
+			        <repository>bbelojevic/${project.artifactId}</repository>
+			        <tag>${project.version}</tag>
+			        <buildArgs>
+			          <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+			        </buildArgs>
+			        <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+			    </configuration>
 			</plugin>
 		</plugins>
 	</build>
