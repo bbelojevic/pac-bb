@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: pac-backend
+  cloud:
+    kubernetes:
+      discovery:
+        enabled: true
+      reload:
+        enabled: false
+      config:
+        enabled: true
+  data:
+    neo4j:
+      uri: bolt://minikube:32011
+      username: neo4j
+      password: pacneo4j
