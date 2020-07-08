@@ -17,7 +17,7 @@ memory: 6000
 and more: 
 
 - java 8
-- lombok 1.8.12
+- lombok 1.8.12 (C:\Users\bbelojevic\.m2\repository\org\projectlombok\lombok\1.18.12>java -jar lombok-1.18.12.jar)
 - node.js v8.10.0
 - npm 5.6.0
 - maven 3.5.2
