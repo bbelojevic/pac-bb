@@ -88,6 +88,35 @@ minikube ip
 go to http://192.168.1.6:30884/locations
 ```
 
+- now we want to use ingress instead of nodeport
+
+```
+kubectl delete namespace pac-backend
+kubectl create namespace pac-backend
+kubectl -n pac-backend create deployment --image=bbelojevic/pac-backend:0.0.2-SNAPSHOT pac-backend
+
+// we should add containerPort 8080
+
+PS C:\PAC> kubectl -n pac-backend expose deployment pac-backend --port=8080
+
+// it should probably be port 80
+
+kubectl -n pac-backend apply -f C:\PAC\pac-source\minikube\backend\configmap.yaml
+
+// after every change you shoul delete the pod and check the logs (configmap parameters issues possible)
+
+kubectl -n pac-backend logs pac-backend-5774d57b66-45hn2 -f
+
+kubectl -n pac-backend create serviceaccount pac-backend
+kubectl -n pac-backend apply -f C:\PAC\pac-source\minikube\backend\clusterrolebinding.yaml
+
+kubectl -n pac-backend apply -f C:\PAC\pac-source\minikube\backend\ingress.yaml
+
+// add resources to deployment and create hpa
+
+kubectl -n pac-backend autoscale deployment pac-backend --min=1 --max=3 --cpu-percent=80
+```
+
 # pac-frontend
 
 ```
