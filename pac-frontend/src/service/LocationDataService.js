@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BACKEND_API_URL = "http://localhost:8080";
+const BACKEND_API_URL = "http://pac.backend";
 const LOCATION_API_URL = `${BACKEND_API_URL}/locations`;
 
 class LocationDataService {
