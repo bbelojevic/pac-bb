@@ -170,3 +170,22 @@ docker push bbelojevic/pac-frontend:0.1
 
 docker run -it -p 8080:8080 --rm --name pac-frontend-1 bbelojevic/pac-frontend:0.1
 ```
+
+- now we want to use ingress, btw first version of Dockerfile is exposing our app on 8080, we will change this https://vuejs.org/v2/cookbook/dockerize-vuejs-app.html
+
+```
+kubectl create namespace pac-frontend
+kubectl -n pac-frontend create deployment --image=bbelojevic/pac-frontend:0.1 pac-frontend
+
+// we should add containerPort 8080
+
+kubectl -n pac-backend expose deployment pac-backend --port=80
+
+// but targetPort is 8080
+
+kubectl -n pac-frontend apply -f C:\PAC\pac-source\minikube\frontend\ingress.yaml
+
+// add resources to deployment and create hpa
+
+kubectl -n pac-frontend autoscale deployment pac-frontend --min=1 --max=3 --cpu-percent=80
+```
