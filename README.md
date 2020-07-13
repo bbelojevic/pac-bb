@@ -53,7 +53,7 @@ from chrome go to https://localhost:7687/, click advanced and accept certificate
 # pac-backend
 
 - create a docker hub account
-- add Dockerfile, go to pac-bb/Dockerfile and add a plugin for com.spotify/dockerfile-maven-plugin into the pom.xml
+- add Dockerfile, go to pac-bb/pac/pac-backend/Dockerfile, also add a plugin for com.spotify/dockerfile-maven-plugin into the pom.xml
 
 ```
 mvn install 
@@ -151,4 +151,22 @@ npm run serve
 
   Note that the development build is not optimized.
   To create a production build, run npm run build.
+```
+
+- access to a docker hub account
+- add Dockerfile, go to pac-bb/pac/pac-frontend/Dockerfile
+
+```
+PS C:\PAC\pac-source\pac-frontend> docker build -t bbelojevic/pac-frontend:0.1 .
+// check if image is there
+docker images
+```
+
+- push to the docker hub with
+
+```
+docker login
+docker push bbelojevic/pac-frontend:0.1
+
+docker run -it -p 8080:8080 --rm --name pac-frontend-1 bbelojevic/pac-frontend:0.1
 ```
