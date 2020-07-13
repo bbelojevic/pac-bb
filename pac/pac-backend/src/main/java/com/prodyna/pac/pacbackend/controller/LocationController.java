@@ -20,19 +20,19 @@ import com.prodyna.pac.pacbackend.exception.LocationException;
 import com.prodyna.pac.pacbackend.model.Location;
 import com.prodyna.pac.pacbackend.repository.LocationRepository;
 
-@CrossOrigin(origins = { "http://localhost:8081" })
+@CrossOrigin(origins = { "http://localhost:8080", "http://localhost:8081", "http://pac.frontend" })
 @RestController
 public class LocationController {
 
     @Autowired
     private LocationRepository locationRepository;
 
-    // private static final String template = "Hello, %s!";
-    //
-    // @GetMapping("/greeting")
-    // public Location greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-    // return new Location(String.format(template, name));
-    // }
+    private static final String template = "Hello, %s!";
+
+    @GetMapping("/greeting")
+    public Location greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return new Location(String.format(template, name));
+    }
 
     @GetMapping(path = "/createLocation")
     public HttpStatus createLocation(@RequestParam String name) {

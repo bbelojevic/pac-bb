@@ -46,7 +46,8 @@ curl http://localhost:7474/
 
 In chrome go to http://minikube:32010/ this will lead to http://minikube:32010/browser/, you should connect with bolt://localhost:7687 and no authentication.
 
-Before that, there was an issue with certification (neo4j helm WebSocket connection to ws:// failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED), from chrome go to https://localhost:7687/, click advanced and accept certificate. After that you'll be able to connect to db (You are connected to bolt://localhost:7687)
+Before that, there was an issue with certification (neo4j helm WebSocket connection to ws:// failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED), 
+from chrome go to https://localhost:7687/, click advanced and accept certificate. After that you'll be able to connect to db (You are connected to bolt://localhost:7687)
 
 
 # pac-backend
@@ -97,17 +98,17 @@ kubectl -n pac-backend create deployment --image=bbelojevic/pac-backend:0.0.2-SN
 
 // we should add containerPort 8080
 
-PS C:\PAC> kubectl -n pac-backend expose deployment pac-backend --port=8080
+kubectl -n pac-backend expose deployment pac-backend --port=8080
 
 // it should probably be port 80
 
 kubectl -n pac-backend apply -f C:\PAC\pac-source\minikube\backend\configmap.yaml
 
-// after every change you shoul delete the pod and check the logs (configmap parameters issues possible)
+// after every change you should delete the pod and check the logs (configmap parameters issues possible)
 
 kubectl -n pac-backend logs pac-backend-5774d57b66-45hn2 -f
 
-kubectl -n pac-backend create serviceaccount pac-backend
+// kubectl -n pac-backend create serviceaccount pac-backend
 kubectl -n pac-backend apply -f C:\PAC\pac-source\minikube\backend\clusterrolebinding.yaml
 
 kubectl -n pac-backend apply -f C:\PAC\pac-source\minikube\backend\ingress.yaml
