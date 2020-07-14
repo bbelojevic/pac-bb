@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PacBackendApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PacBackendApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(PacBackendApplication.class, args);
+    }
 
 }

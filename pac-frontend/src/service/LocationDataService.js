@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BACKEND_API_URL = process.env.VUE_APP_BASE_URL;
-const LOCATION_API_URL = `${BACKEND_API_URL}/locations`;
+const LOCATION_API_URL = `${BACKEND_API_URL}/api/locations`;
 
 class LocationDataService {
   

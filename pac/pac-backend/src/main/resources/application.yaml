@@ -1,5 +1,6 @@
 server:
   port: 8080
+  servlet:    context-path: /api
 spring:
   application:
     name: pac-backend
@@ -16,3 +17,7 @@ spring:
       uri: bolt://minikube:32011
       username: neo4j
       password: pacneo4j
+management:  endpoints:    web:      exposure:        include: info, health, metrics
+  endpoint:    health:      show-details: ALWAYS
+  health:    neo4j:      enabled: true
+client.url: http://localhost:8081

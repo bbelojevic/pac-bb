@@ -20,7 +20,7 @@ import com.prodyna.pac.pacbackend.exception.LocationException;
 import com.prodyna.pac.pacbackend.model.Location;
 import com.prodyna.pac.pacbackend.repository.LocationRepository;
 
-@CrossOrigin(origins = { "http://localhost:8080", "http://localhost:8081", "http://pac.frontend" })
+@CrossOrigin
 @RestController
 public class LocationController {
 
