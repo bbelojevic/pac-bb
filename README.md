@@ -154,10 +154,10 @@ npm run serve
 ```
 
 - access to a docker hub account
-- add Dockerfile, go to pac-bb/pac/pac-frontend/Dockerfile
+- add Dockerfile, go to pac-bb/pac/pac-frontend/Dockerfile (https://vuejs.org/v2/cookbook/dockerize-vuejs-app.html)
 
 ```
-PS C:\PAC\pac-source\pac-frontend> docker build -t bbelojevic/pac-frontend:0.1 .
+PS C:\PAC\pac-source\pac-frontend> docker build -t bbelojevic/pac-frontend:0.14 .
 // check if image is there
 docker images
 ```
@@ -166,22 +166,22 @@ docker images
 
 ```
 docker login
-docker push bbelojevic/pac-frontend:0.1
+docker push bbelojevic/pac-frontend:0.14
 
-docker run -it -p 8080:8080 --rm --name pac-frontend-1 bbelojevic/pac-frontend:0.1
+docker run -it -p 8080:80 --rm --name pac-frontend-1 bbelojevic/pac-frontend:0.14
 ```
 
-- now we want to use ingress, btw first version of Dockerfile is exposing our app on 8080, we will change this https://vuejs.org/v2/cookbook/dockerize-vuejs-app.html
+- now we want to use ingress
 
 ```
 kubectl create namespace pac-frontend
 kubectl -n pac-frontend create deployment --image=bbelojevic/pac-frontend:0.1 pac-frontend
 
-// we should add containerPort 8080
+// we should add containerPort 80
 
 kubectl -n pac-backend expose deployment pac-backend --port=80
 
-// but targetPort is 8080
+// targetPort is 80
 
 kubectl -n pac-frontend apply -f C:\PAC\pac-source\minikube\frontend\ingress.yaml
 
