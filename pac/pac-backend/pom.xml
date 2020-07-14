@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.prodyna.pac</groupId>
 	<artifactId>pac-backend</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.5-SNAPSHOT</version>
 	<name>pac-backend</name>
 	<description>PAC backend</description>
 
