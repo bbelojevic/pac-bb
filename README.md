@@ -40,14 +40,12 @@ Change service to be able to access it from outside of cluster, go to pac-bb/min
 ```
 kubectl -n persistence delete service neo4j-community-neo4j-community
 kubectl -n persistence create -f C:\PAC\pac-source\minikube\neo4j\service.yaml
-
-curl http://localhost:7474/
 ```
 
-In chrome go to http://minikube:32010/ this will lead to http://minikube:32010/browser/, you should connect with bolt://localhost:7687 and no authentication.
+In chrome go to http://minikube:32010/ this will lead to http://minikube:32010/browser/, you should connect with bolt://minikube:32011 and usernam and password.
 
-Before that, there was an issue with certification (neo4j helm WebSocket connection to ws:// failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED), 
-from chrome go to https://localhost:7687/, click advanced and accept certificate. After that you'll be able to connect to db (You are connected to bolt://localhost:7687)
+If there is an issue with certification (neo4j helm WebSocket connection to ws:// failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED), 
+from chrome go to https://minikube:32011/, click advanced and accept certificate. After that you'll be able to connect to db.
 
 
 # pac-backend
@@ -94,7 +92,7 @@ go to http://192.168.1.6:30884/locations
 ```
 kubectl delete namespace pac-backend
 kubectl create namespace pac-backend
-kubectl -n pac-backend create deployment --image=bbelojevic/pac-backend:0.0.2-SNAPSHOT pac-backend
+kubectl -n pac-backend create deployment --image=bbelojevic/pac-backend:0.0.5-SNAPSHOT pac-backend
 
 // we should add containerPort 8080
 
@@ -175,11 +173,11 @@ docker run -it -p 8080:80 --rm --name pac-frontend-1 bbelojevic/pac-frontend:0.1
 
 ```
 kubectl create namespace pac-frontend
-kubectl -n pac-frontend create deployment --image=bbelojevic/pac-frontend:0.1 pac-frontend
+kubectl -n pac-frontend create deployment --image=bbelojevic/pac-frontend:0.15 pac-frontend
 
 // we should add containerPort 80
 
-kubectl -n pac-backend expose deployment pac-backend --port=80
+kubectl -n pac-frontend expose deployment pac-frontend --port=80
 
 // targetPort is 80
 
@@ -188,4 +186,41 @@ kubectl -n pac-frontend apply -f C:\PAC\pac-source\minikube\frontend\ingress.yam
 // add resources to deployment and create hpa
 
 kubectl -n pac-frontend autoscale deployment pac-frontend --min=1 --max=3 --cpu-percent=80
+```
+
+# keycloak
+
+- we will install mariadb and connect keycloak to it, after that we must setup pac-frontend and after that pac-backend
+
+```
+helm repo add codecentric https://codecentric.github.io/helm-charts
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
+
+kubectl create namespace keycloak
+helm -n keycloak upgrade --install -f C:\PAC\pac-source\minikube\keycloak\maraidb-config.yaml keycloak-mariadb bitnami/mariadb
+helm -n keycloak upgrade --install -f C:\PAC\pac-source\minikube\keycloak\keycloak-config.yaml keycloak codecentric/keycloak
+kubectl -n keycloak get pods
+
+// go to http://keycloak.minikube/
+
+// check if mariadb is working 
+
+kubectl -n keycloak exec -ti keycloak-mariadb-master-0 -- bash
+
+I have no name!@keycloak-mariadb-master-0:/$ mysql -ukeycloak -pkeycloak keycloak
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 1212
+Server version: 10.3.23-MariaDB-log Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [keycloak]> show tables;
+Empty set (0.000 sec)
+
+MariaDB [keycloak]>
+
+
 ```
