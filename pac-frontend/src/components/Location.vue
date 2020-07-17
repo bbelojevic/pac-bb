@@ -69,6 +69,12 @@ export default {
     this.refreshLocationDetails();
   }
 };
+
+// https://router.vuejs.org/api/#router-link
+// https://github.com/vuejs/vue-router/issues/2881
+// this.$router.push({
+//   name: 'about-too'
+// }, () => {});
 </script>
 
 <style>

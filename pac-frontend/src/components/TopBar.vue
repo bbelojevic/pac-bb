@@ -1,6 +1,8 @@
 <template>
   <nav class="navbar is-primary navbar-expand-sm bg-dark navbar-dark justify-content-end" role="navigation" aria-label="main navigation">
-
+    <div v-if="authenticated" class="px-5">
+      <strong class="text-warning">{{username}}</strong>
+    </div>
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
@@ -26,6 +28,10 @@ export default {
     authenticated: {
       type: Boolean,
       default: false
+    },
+    username: {
+      type: String,
+      default: ""
     }
   },
   data() {

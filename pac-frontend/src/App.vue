@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <TopBar :authenticated="authenticated" />
+  <div class="container-fluid">
+    <TopBar :authenticated="authenticated" :username="username" />
     <router-view />
   </div>
 </template>
@@ -25,15 +25,18 @@ export default {
   },
   data() {
     return {
-      authenticated: false
+      authenticated: false,
+      username: ""
     };
   },
   mounted() {
     //try {
       if (Vue.prototype.$keycloak.token !== null) {
         this.authenticated = true;
-        console.log(Vue.prototype.$keycloak.userName);
+        this.username = Vue.prototype.$keycloak.userName;
         console.log(Vue.prototype.$keycloak.tokenParsed.realm_access.roles[0]);
+        console.log(Vue.prototype.$keycloak.tokenParsed.realm_access.roles);
+        console.log(Vue.prototype.$keycloak.tokenParsed);
         console.log(Vue.prototype.$keycloak.tokenParsed.email);
       } else {
         console.log("Not logged");

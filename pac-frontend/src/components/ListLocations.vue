@@ -5,7 +5,7 @@
       {{message}}
     </div>
     <div class="row mb-3">
-      <button class="btn btn-success" v-on:click="addLocationClicked()">Add</button>
+      <router-link :to="{ name: 'Location Details', params: { id: -1 }}" tag="button" class="btn btn-success">Add</router-link>
     </div>
     <div class="container">
           <table class="table">
@@ -22,7 +22,7 @@
             <td>{{location.id}}</td>
             <td>{{location.name}}</td>
             <td>
-              <button class="btn btn-warning" v-on:click="updateLocationClicked(location.id)">Update</button>
+              <router-link :to="{ name: 'Location Details', params: { id: location.id }}" tag="button" class="btn btn-warning">Update</router-link>
             </td>
             <td>
               <button class="btn btn-secondary" v-on:click="deleteLocationClicked(location.id)">Delete</button>
@@ -52,12 +52,6 @@ export default {
         .then(response => {
           this.locations = response.data;
         });
-    },
-    addLocationClicked() {
-      this.$router.push(`/locations/-1`);
-    },
-    updateLocationClicked(id) {
-      this.$router.push(`/locations/${id}`);
     },
     deleteLocationClicked(id) {
       LocationDataService.deleteLocation(id).then(response => {
