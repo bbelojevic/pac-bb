@@ -1,6 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./routes";
+import store from "./store";
 import VueKeyCloak from "@dsb-norge/vue-keycloak-js";
 
 Vue.config.productionTip = false
@@ -25,6 +26,7 @@ Vue.use(VueKeyCloak, {
 
     new Vue({
       router,
+      store,
       render: (h) => h(App),
     }).$mount("#app");
   },

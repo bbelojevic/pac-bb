@@ -24,20 +24,18 @@ import Vue from "vue";
 
 export default {
   name: "TopBar",
-  props: {
-    authenticated: {
-      type: Boolean,
-      default: false
-    },
-    username: {
-      type: String,
-      default: ""
-    }
-  },
   data() {
     return {
 
     };
+  },
+  computed: {
+    username () {
+      return this.$store.state.user.username;
+    },
+    authenticated () {
+      return this.$store.state.user.authenticated;
+    }
   },
   methods: {
     logIn() {

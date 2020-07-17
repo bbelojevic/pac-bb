@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
+import store from './store';
 
 // const originalPush = Router.prototype.push
 // Router.prototype.push = function push(location, onResolve, onReject) {
@@ -41,8 +42,8 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requireToBeAdmin)) {
-    if (Vue.prototype.$keycloak.authenticated) {
-      var roles = Vue.prototype.$keycloak.tokenParsed.realm_access.roles;
+    if (store.getters.authenticated) {
+      var roles = store.getters.roles;
 
       var adminRole = roles.filter(item => {
         return item === 'Admin';
