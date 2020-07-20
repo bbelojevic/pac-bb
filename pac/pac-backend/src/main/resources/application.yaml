@@ -16,8 +16,13 @@ spring:
     neo4j:
       uri: bolt://minikube:32011
       username: ${DATABASE_USERNAME:neo4j}
-      password: ${DATABASE_PASSWORD:pacneo4j}
+      password: ${DATABASE_PASSWORD:pacneo4j}  main:    allow-bean-definition-overriding: true
 management:  endpoints:    web:      exposure:        include: info, health, metrics
   endpoint:    health:      show-details: ALWAYS
   health:    neo4j:      enabled: true
 client.url: http://localhost:8081
+keycloak:  auth-server-url: http://keycloak.minikube/auth/
+  realm: pac
+  resource: pac-backend
+  bearer-only: true
+  principal-attribute: preferred_username

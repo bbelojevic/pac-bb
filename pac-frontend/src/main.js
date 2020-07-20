@@ -3,11 +3,26 @@ import App from "./App.vue";
 import router from "./routes";
 import store from "./store";
 import VueKeyCloak from "@dsb-norge/vue-keycloak-js";
+import axios from 'axios';
 
 Vue.config.productionTip = false
 
 // Allow vue-devtools inspection - TODO -> Set false for production
 Vue.config.devtools = true;
+
+function tokenInterceptor() {
+  axios.interceptors.request.use((config) => {
+    config.headers.Authorization = `Bearer ${Vue.prototype.$keycloak.token}`;
+
+
+    console.log("jedan : " + config.headers.Authorization);
+
+
+    return config;
+  }, (error) => {
+    return Promise.reject(error);
+  });
+}
 
 Vue.use(VueKeyCloak, {
   config: {
@@ -20,9 +35,9 @@ Vue.use(VueKeyCloak, {
     onLoad: "check-sso",
   },
   onReady: () => {
-//     if (Vue.prototype.$keycloak.authenticated) {
-//       tokenInterceptor();
-//     }
+    if (Vue.prototype.$keycloak.authenticated) { // use store?
+      tokenInterceptor();
+    }
 
     new Vue({
       router,

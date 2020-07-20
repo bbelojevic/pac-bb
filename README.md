@@ -42,7 +42,7 @@ kubectl -n persistence delete service neo4j-community-neo4j-community
 kubectl -n persistence create -f C:\PAC\pac-source\minikube\neo4j\service.yaml
 ```
 
-In chrome go to http://minikube:32010/ this will lead to http://minikube:32010/browser/, you should connect with bolt://minikube:32011 and usernam and password.
+In chrome go to http://minikube:32010/ this will lead to http://minikube:32010/browser/, you should connect with bolt://minikube:32011 and username and password.
 
 If there is an issue with certification (neo4j helm WebSocket connection to ws:// failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED), 
 from chrome go to https://minikube:32011/, click advanced and accept certificate. After that you'll be able to connect to db.
