@@ -21,8 +21,10 @@ management:  endpoints:    web:      exposure:        include: info, health,
   endpoint:    health:      show-details: ALWAYS
   health:    neo4j:      enabled: true
 client.url: http://localhost:8081
-keycloak:  auth-server-url: http://keycloak.minikube/auth/
+keycloak:  auth-server-url: http://minikube:32020/auth/
   realm: pac
   resource: pac-backend
   bearer-only: true
   principal-attribute: preferred_username
+# auth-server-url: http://keycloak.minikube/auth/
+# auth-server-url: http://keycloak-http.keycloak/auth/
