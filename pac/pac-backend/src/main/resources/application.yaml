@@ -17,8 +17,11 @@ spring:
       uri: bolt://minikube:32011
       username: ${DATABASE_USERNAME:neo4j}
       password: ${DATABASE_PASSWORD:pacneo4j}  main:    allow-bean-definition-overriding: true
-management:  endpoints:    web:      exposure:        include: info, health, metrics
+management:  endpoints:    web:      exposure:        include: info, health, metrics, prometheus
   endpoint:    health:      show-details: ALWAYS
+    metrics:      enabled: true
+    prometheus:      enabled: true
+  metrics:    export:      prometheus:        enabled: true
   health:    neo4j:      enabled: true
 client.url: http://localhost:8081
 keycloak:  auth-server-url: http://minikube:32020/auth/

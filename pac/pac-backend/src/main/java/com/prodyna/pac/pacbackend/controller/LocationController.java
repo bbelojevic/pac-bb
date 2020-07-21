@@ -20,8 +20,11 @@ import com.prodyna.pac.pacbackend.exception.LocationException;
 import com.prodyna.pac.pacbackend.model.Location;
 import com.prodyna.pac.pacbackend.repository.LocationRepository;
 
+import io.micrometer.core.annotation.Timed;
+
 @CrossOrigin
 @RestController
+@Timed
 public class LocationController {
 
     @Autowired
@@ -43,6 +46,7 @@ public class LocationController {
 
     }
 
+    @Timed("pac.locations.getall")
     @GetMapping(path = "/locations")
     public List<Location> getLocations() {
 
@@ -57,6 +61,7 @@ public class LocationController {
 
     }
 
+    @Timed("pac.locations.getone")
     @GetMapping("/locations/{id}")
     public Location getLocation(@PathVariable Long id) {
 
@@ -64,6 +69,7 @@ public class LocationController {
 
     }
 
+    @Timed("pac.locations.createorupdate")
     @PutMapping("/locations/{id}")
     public ResponseEntity<Location> updateOrCreateLocation(@RequestBody Location newLocation, @PathVariable Long id) {
 
@@ -79,6 +85,7 @@ public class LocationController {
 
     }
 
+    @Timed("pac.locations.delete")
     @DeleteMapping("/locations/{id}")
     public ResponseEntity<Void> deleteLocation(@PathVariable Long id) {
 

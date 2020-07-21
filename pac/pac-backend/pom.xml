@@ -90,6 +90,14 @@
 			<version>10.0.2</version>
 			<type>pom</type>
 		</dependency>
+		<dependency>
+   			<groupId>io.micrometer</groupId>
+   			<artifactId>micrometer-core</artifactId>
+ 		</dependency>
+		<dependency>
+  			<groupId>io.micrometer</groupId>
+  			<artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
