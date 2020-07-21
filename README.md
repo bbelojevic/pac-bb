@@ -222,5 +222,16 @@ Empty set (0.000 sec)
 
 MariaDB [keycloak]>
 
+```
 
+- there was an issue with jwt iss (WWW-Authenticate: Bearer realm="pac", error="invalid_token", error_description="Invalid token issuer. Expected 'http://keycloak-http.keycloak/auth/realms/pac', but was 'http://keycloak.minikube/auth/realms/pac'")
+- didn't find a way to work in a one node environment suh as minikube
+- in the end, frontend was pointing to the ingress exposed url 'http://keycloak.minikube/auth/realms/pac' and backend was pointing directly to service 'http://keycloak-http.keycloak/auth/realms/pac'
+- it was neccessary to expose service as NodePort
+
+```
+kubectl -n keycloak delete service keycloak-http
+kubectl -n keycloak create -f C:\PAC\pac-source\minikube\keycloak\service.yaml
+
+http://minikube:32020 
 ```
