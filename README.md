@@ -388,3 +388,22 @@ PS C:\PAC\pac-source>
 ```
 pac_locations_getall_seconds_count{app="pac-backend",exception="None",instance="172.17.0.10:8080",job="kubernetes-pods",kubernetes_namespace="pac-backend",kubernetes_pod_name="pac-backend-847857cf9f-c4g86",method="GET",outcome="SUCCESS",pod_template_hash="847857cf9f",status="200",uri="/locations"}
 ```
+
+- helm charts for pac-backend and pac-frontend
+
+```
+
+helm lint // to check if helm chart is well formatted
+
+kubectl delete namespace pac-backend
+kubectl delete clusterrolebinding pac-backend
+
+kubectl create namespace pac-backend
+helm -n pac-backend upgrade --install -f C:\PAC\pac-source\helm\pac-backend\pac-backend-config.yaml pac-backend C:\PAC\pac-source\helm\pac-backend
+
+kubectl delete namespace pac-frontend
+
+kubectl create namespace pac-frontend
+helm -n pac-frontend upgrade --install -f C:\PAC\pac-source\helm\pac-frontend\pac-frontend-config.yaml pac-frontend C:\PAC\pac-source\helm\pac-frontend
+
+```

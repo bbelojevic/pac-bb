@@ -1,0 +1,8 @@
+ingress:
+  enabled: true
+  hosts: 
+    - host: pac.frontend
+      paths: 
+        - "/"
+image:
+  pullPolicy: IfNotPresent
