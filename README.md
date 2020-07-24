@@ -236,6 +236,34 @@ kubectl -n keycloak create -f C:\PAC\pac-source\minikube\keycloak\service.yaml
 http://minikube:32020 
 ```
 
+-general setup
+
+```
+
+- realm: pac
+- client: pac-backend
+  - Access Type: Bearer-only
+
+
+- client: pac-frontend
+  - Access Type: Bearer-only
+  - Standard Flow Enabled: On
+  - Direct Access Grants Enabled: On
+  - Root URL: http://pac.frontend/
+  - * Valid Redirect URIs: http://pac.frontend/*
+  - Base URL: http://pac.frontend/
+  - Admin URL http://pac.frontend/
+  - Web Origins: *
+  
+- roles: Admin, Manager
+- groups: Admin, Manager
+
+- users: bbelojevic
+  - Email: bbelojevic@gmail.com
+  - Role mappings: Admin
+
+``` 
+
 # prometheus and grafana
 
 - we will install prometheus and grafana so we can monitor our API calls
@@ -252,9 +280,8 @@ kubectl -n monitoring get pods
 // go to http://prometheus.minikube/
 
 // check if prometheus is working, go to http://prometheus.minikube/targets and check for "kubernetes-pods" and there should be our endpoint http://172.17.0.11:8080api/actuator/prometheus  
-// pac_locations_getall_seconds_count{app="pac-backend",exception="None",instance="172.17.0.11:8080",job="kubernetes-pods",kubernetes_namespace="pac-backend",kubernetes_pod_name="pac-backend-847857cf9f-c4g86",method="GET",outcome="SUCCESS",pod_template_hash="847857cf9f",status="200",uri="/locations"}
+// pac_locations_getall_seconds_count{app="pac-backend",exception="None",instance="172.17.0.10:8080",job="kubernetes-pods",kubernetes_namespace="pac-backend",kubernetes_pod_name="pac-backend-847857cf9f-c4g86",method="GET",outcome="SUCCESS",pod_template_hash="847857cf9f",status="200",uri="/locations"}
 
-PS C:\PAC\pac-source> helm -n monitoring upgrade --install -f C:\PAC\pac-source\minikube\prometheus\prometheus-config.yaml prometheus stable/prometheus
 Release "prometheus" does not exist. Installing it now.
 NAME: prometheus
 LAST DEPLOYED: Tue Jul 21 18:11:13 2020
@@ -296,4 +323,68 @@ Get the PushGateway URL by running these commands in the same shell:
 For more information on running Prometheus, visit:
 https://prometheus.io/
 
+```
+
+```
+// helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+// helm repo update
+
+// kubectl create namespace monitoring
+helm -n monitoring upgrade --install -f C:\PAC\pac-source\minikube\grafana\grafana-config.yaml grafana stable/grafana
+
+kubectl -n monitoring get pods
+
+// go to http://grafana.minikube/
+
+fana stable/grafana
+Release "grafana" does not exist. Installing it now.
+NAME: grafana
+LAST DEPLOYED: Fri Jul 24 10:31:24 2020
+NAMESPACE: monitoring
+STATUS: deployed
+REVISION: 1
+NOTES:
+1. Get your 'admin' user password by running:
+
+   kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+
+2. The Grafana server can be accessed via port 80 on the following DNS name from within your cluster:
+
+   grafana.monitoring.svc.cluster.local
+
+   If you bind grafana to 80, please update values in values.yaml and reinstall:
+   ```
+   securityContext:
+     runAsUser: 0
+     runAsGroup: 0
+     fsGroup: 0
+
+   command:
+   - "setcap"
+   - "'cap_net_bind_service=+ep'"
+   - "/usr/sbin/grafana-server &&"
+   - "sh"
+   - "/run.sh"
+   ```
+   Details refer to https://grafana.com/docs/installation/configuration/#http-port.
+   Or grafana would always crash.
+
+   From outside the cluster, the server URL(s) are:
+     http://grafana.minikube
+
+
+3. Login with the password from step 1 and the username: admin
+#################################################################################
+######   WARNING: Persistence is disabled!!! You will lose your data when   #####
+######            the Grafana pod is terminated.                            #####
+#################################################################################
+PS C:\PAC\pac-source>
+
+```
+
+- add datasource Prometheus with url http://prometheus-server.monitoring.svc.cluster.local
+- example: go to Dashboards -> Manage menu item and click Import to add the dashboard with ID: 1621
+- add panel with 
+```
+pac_locations_getall_seconds_count{app="pac-backend",exception="None",instance="172.17.0.10:8080",job="kubernetes-pods",kubernetes_namespace="pac-backend",kubernetes_pod_name="pac-backend-847857cf9f-c4g86",method="GET",outcome="SUCCESS",pod_template_hash="847857cf9f",status="200",uri="/locations"}
 ```
