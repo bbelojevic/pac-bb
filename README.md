@@ -199,7 +199,7 @@ helm repo update
 
 kubectl create namespace keycloak
 helm -n keycloak upgrade --install -f C:\PAC\pac-source\minikube\keycloak\maraidb-config.yaml keycloak-mariadb bitnami/mariadb
-helm -n keycloak upgrade --install -f C:\PAC\pac-source\minikube\keycloak\keycloak-config.yaml keycloak codecentric/keycloak
+helm -n keycloak upgrade --install -f C:\PAC\pac-source\minikube\keycloak\keycloak-config.yaml keycloak codecentric/keycloak --version 8.3.0
 kubectl -n keycloak get pods
 
 // go to http://keycloak.minikube/
