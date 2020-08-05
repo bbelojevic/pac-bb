@@ -1,0 +1,10 @@
+ingress:
+  enabled: true
+  hosts: 
+    - host: pac.backend
+      paths: 
+        - "/"
+image:
+  pullPolicy: IfNotPresent
+neo4j:
+  uri: bolt://neo4j-community-neo4j-community-nodeport.persistence
