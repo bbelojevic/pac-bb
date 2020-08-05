@@ -16,9 +16,6 @@ spec:
     {{- with .Values.podAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
-        prometheus.io/path: api/actuator/prometheus
-        prometheus.io/port: "8080"
-        prometheus.io/scrape: "true"
     {{- end }}
       labels:
         {{- include "pac-backend.selectorLabels" . | nindent 8 }}
