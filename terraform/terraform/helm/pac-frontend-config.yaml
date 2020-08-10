@@ -6,3 +6,5 @@ ingress:
         - "/"
 image:
   pullPolicy: IfNotPresent
+autoscaling:
+  enabled: true

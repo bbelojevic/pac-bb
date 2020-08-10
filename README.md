@@ -75,7 +75,7 @@ mvn dockerfile:push
 - or do a 
 ```
 docker login
-docker push bbelojevic/pac-backend:0.0.1-SNAPSHOT // it was extremely slow
+docker push bbelojevic/pac-backend:0.0.8-SNAPSHOT // it was extremely slow
 ```
 
 ```
@@ -114,6 +114,65 @@ kubectl -n pac-backend apply -f C:\PAC\pac-source\minikube\backend\ingress.yaml
 // add resources to deployment and create hpa
 
 kubectl -n pac-backend autoscale deployment pac-backend --min=1 --max=3 --cpu-percent=80
+
+// test hpa 
+kubectl -n pac-backend get hpa 
+
+C:\PAC\httpd-2.4.43-win64-VS16\Apache24\bin>ab -n 100000 -c 1000 http://pac.backend/api/locations
+This is ApacheBench, Version 2.3 <$Revision: 1874286 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking pac.backend (be patient)
+Completed 10000 requests
+Completed 20000 requests
+Completed 30000 requests
+Completed 40000 requests
+Completed 50000 requests
+Completed 60000 requests
+Completed 70000 requests
+Completed 80000 requests
+Completed 90000 requests
+Completed 100000 requests
+Finished 100000 requests
+
+
+Server Software:        nginx/1.17.10
+Server Hostname:        pac.backend
+Server Port:            80
+
+Document Path:          /api/locations
+Document Length:        56 bytes
+
+Concurrency Level:      1000
+Time taken for tests:   391.756 seconds
+Complete requests:      100000
+Failed requests:        93942
+   (Connect: 0, Receive: 0, Length: 93942, Exceptions: 0)
+Total transferred:      58035359 bytes
+HTML transferred:       15835359 bytes
+Requests per second:    255.26 [#/sec] (mean)
+Time per request:       3917.559 [ms] (mean)
+Time per request:       3.918 [ms] (mean, across all concurrent requests)
+Transfer rate:          144.67 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    1   1.1      1      28
+Processing:     6 3875 4490.2    393   14576
+Waiting:        5 3869 4490.6    386   14572
+Total:          7 3877 4490.1    395   14577
+
+Percentage of the requests served within a certain time (ms)
+  50%    395
+  66%   7188
+  75%   8699
+  80%   9136
+  90%  10093
+  95%  10938
+  98%  12692
+  99%  13277
+ 100%  14577 (longest request)
 ```
 
 # pac-frontend
@@ -155,7 +214,8 @@ npm run serve
 - add Dockerfile, go to pac-bb/pac/pac-frontend/Dockerfile (https://vuejs.org/v2/cookbook/dockerize-vuejs-app.html)
 
 ```
-PS C:\PAC\pac-source\pac-frontend> docker build -t bbelojevic/pac-frontend:0.14 .
+PS C:\PAC\pac-source\pac-frontend> docker build -t bbelojevic/pac-frontend:0.23 .
+PS C:\PAC\pac-source\pac-frontend> docker build -t bbelojevic/pac-frontend:0.23 -t bbelojevic/pac-frontend:latest .
 // check if image is there
 docker images
 ```
@@ -164,16 +224,17 @@ docker images
 
 ```
 docker login
-docker push bbelojevic/pac-frontend:0.14
+docker push bbelojevic/pac-frontend:0.23
+docker push bbelojevic/pac-frontend:latest
 
-docker run -it -p 8080:80 --rm --name pac-frontend-1 bbelojevic/pac-frontend:0.14
+docker run -it -p 8080:80 --rm --name pac-frontend-1 bbelojevic/pac-frontend:0.23
 ```
 
 - now we want to use ingress
 
 ```
 kubectl create namespace pac-frontend
-kubectl -n pac-frontend create deployment --image=bbelojevic/pac-frontend:0.15 pac-frontend
+kubectl -n pac-frontend create deployment --image=bbelojevic/pac-frontend:0.23 pac-frontend
 
 // we should add containerPort 80
 
@@ -405,5 +466,17 @@ kubectl delete namespace pac-frontend
 
 kubectl create namespace pac-frontend
 helm -n pac-frontend upgrade --install -f C:\PAC\pac-source\helm\pac-frontend\pac-frontend-config.yaml pac-frontend C:\PAC\pac-source\helm\pac-frontend
+
+```
+
+# terraform
+
+```
+ // locate yourself in  C:\PAC\pac-source\terraform\terraform>
+ 
+terraform init
+terraform validate
+terraform plan
+terraform apply
 
 ```
