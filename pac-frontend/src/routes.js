@@ -19,6 +19,8 @@ const router = new Router({
       component: () => import("./components/ListLocations"),
       meta: {
         requireToBeAdmin: false,
+        label: "Home", 
+        display: true
       }
     },
     {
@@ -27,6 +29,8 @@ const router = new Router({
       component: () => import("./components/ListLocations"),
       meta: {
         requireToBeAdmin: false,
+        label: "Locations",
+        display: true
       }
     },
     {
@@ -35,6 +39,8 @@ const router = new Router({
       component: () => import("./components/Location"),
       meta: {
         requireToBeAdmin: true,
+        label: "Location",
+        display: false
       }
     }
   ]

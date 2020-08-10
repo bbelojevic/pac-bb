@@ -13,7 +13,7 @@ Vue.config.devtools = true;
 function tokenInterceptor() {
   axios.interceptors.request.use((config) => {
     config.headers.Authorization = `Bearer ${Vue.prototype.$keycloak.token}`;
-    console.log("jedan : " + config.headers.Authorization);
+    //console.log("config.headers.Authorization: " + config.headers.Authorization);
     return config;
   }, (error) => {
     return Promise.reject(error);

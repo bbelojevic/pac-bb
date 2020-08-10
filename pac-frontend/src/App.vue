@@ -15,8 +15,8 @@ export default {
     TopBar
   },
   mounted() {
-    console.log(Vue.prototype.$keycloak.token);
-    console.log(Vue.prototype.$keycloak.authenticated);
+    //console.log(Vue.prototype.$keycloak.token);
+    //console.log(Vue.prototype.$keycloak.authenticated);
     //try {
       if (Vue.prototype.$keycloak.token !== null) {
         this.$store.dispatch('setAuthenticated', Vue.prototype.$keycloak.authenticated);
