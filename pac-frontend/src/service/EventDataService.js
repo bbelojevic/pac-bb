@@ -3,7 +3,7 @@ import axios from "axios";
 const BACKEND_API_URL = process.env.VUE_APP_BASE_URL;
 const EVENT_API_URL = `${BACKEND_API_URL}/api/events`;
 
-class EventsDataService {
+class EventDataService {
   
   retrieveAllEvents() {
     return axios.get(`${EVENT_API_URL}`, {
@@ -15,4 +15,4 @@ class EventsDataService {
 
 }
 
-export default new EventsDataService();
+export default new EventDataService();

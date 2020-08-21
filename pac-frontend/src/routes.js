@@ -53,6 +53,16 @@ const router = new Router({
         display: true
       }
     },
+    {
+      path: "/people",
+      name: "People",
+      component: () => import("./components/ListPersons"),
+      meta: {
+        requireToBeAdmin: false,
+        label: "People",
+        display: true
+      }
+    },
   ]
 });
 
