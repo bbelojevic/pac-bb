@@ -53,12 +53,15 @@ public class SecurityConfiguration extends KeycloakWebSecurityConfigurerAdapter 
             .cors()
             .and()
             .authorizeRequests().antMatchers(HttpMethod.OPTIONS).permitAll()
-            .antMatchers(HttpMethod.GET).permitAll().antMatchers("/locations/*").authenticated()
+            .antMatchers(HttpMethod.GET).permitAll()
             .antMatchers("/locations/*").hasAnyRole("Admin, Manager")
             .anyRequest().denyAll()
             // disable csrf because of API mode
             .and()
             .csrf().disable();
     }
+    
+//    .antMatchers(HttpMethod.GET).permitAll().antMatchers("/locations/*").authenticated()
+//    .antMatchers(HttpMethod.GET).permitAll().antMatchers("/events/*").authenticated()
 
 }
