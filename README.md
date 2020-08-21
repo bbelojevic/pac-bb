@@ -50,6 +50,18 @@ from chrome go to https://minikube:32011/, click advanced and accept certificate
 
 # pac-backend
 
+```
+   http://localhost:8080/api/actuator/metrics
+   http://localhost:8080/api/actuator/health
+   http://localhost:8080/api/v2/api-docs
+   http://localhost:8080/api/swagger-ui/index.htm
+   
+   http://pac.backend/api/actuator/metrics
+   http://pac.backend/api/actuator/health
+   http://pac.backend/api/v2/api-docs
+   http://pac.backend/api/swagger-ui/index.htm
+```
+
 - create a docker hub account
 - add Dockerfile, go to pac-bb/pac/pac-backend/Dockerfile, also add a plugin for com.spotify/dockerfile-maven-plugin into the pom.xml
 
