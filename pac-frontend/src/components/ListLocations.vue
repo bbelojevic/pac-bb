@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h3>All Locations</h3>
+    <h3>Locations</h3>
     <div v-if="message" class="alert alert-success">
       {{message}}
     </div>
@@ -12,7 +12,7 @@
         <thead>
           <tr>
             <th>Id</th>
-            <th>Location Name</th>
+            <th>Name</th>
             <th></th>
             <th></th>
           </tr>

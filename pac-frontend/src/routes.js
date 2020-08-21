@@ -42,7 +42,17 @@ const router = new Router({
         label: "Location",
         display: false
       }
-    }
+    },
+    {
+      path: "/events",
+      name: "Events",
+      component: () => import("./components/ListEvents"),
+      meta: {
+        requireToBeAdmin: false,
+        label: "Events",
+        display: true
+      }
+    },
   ]
 });
 
