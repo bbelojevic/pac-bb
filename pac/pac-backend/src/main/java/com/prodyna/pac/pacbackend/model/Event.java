@@ -1,6 +1,7 @@
 package com.prodyna.pac.pacbackend.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
@@ -16,8 +17,8 @@ import lombok.ToString;
 
 @NodeEntity
 @Data
-@Getter 
-@Setter 
+@Getter
+@Setter
 @NoArgsConstructor
 public class Event {
 
@@ -25,15 +26,20 @@ public class Event {
     @GeneratedValue
     private Long id;
 
-    @Relationship(type="IN_LOCATION")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    private Location location;
-
     private String name;
 
     private Date startDate;
 
     private Date endDate;
+
+    @Relationship(type = "IN_LOCATION")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Location location;
     
+    @Relationship(type = "ON_EVENT", direction = Relationship.INCOMING)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    private Set<Talk> talks;
+
 }

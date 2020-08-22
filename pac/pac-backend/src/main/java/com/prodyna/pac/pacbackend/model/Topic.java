@@ -19,7 +19,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Person {
+public class Topic {
 
     @Id
     @GeneratedValue
@@ -27,12 +27,17 @@ public class Person {
 
     private String name;
 
-    @Relationship(type = "BELONGS_TO")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Organization organization;
+    @Relationship(type = "IS_RELATED_TO", direction = Relationship.OUTGOING)
+    private Set<Topic> parents;
 
-    @Relationship(type = "BY_PERSON", direction = Relationship.INCOMING)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @Relationship(type = "IS_RELATED_TO", direction = Relationship.INCOMING)
+    private Set<Topic> children;
+
+    @Relationship(type = "IS_USED", direction = Relationship.INCOMING)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Set<Talk> talks;

@@ -11,15 +11,15 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Autowired
     private Environment env;
-    
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        
+
         String url = env.getProperty("client.url");
-        
+
         registry.addMapping("/api/**")
                 .allowedOrigins(url);
-        
+
     }
 
 }

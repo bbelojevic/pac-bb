@@ -11,7 +11,7 @@ import com.prodyna.pac.pacbackend.projection.EventProjection;
 import io.micrometer.core.annotation.Timed;
 
 @Repository
-@RepositoryRestResource(path="events", collectionResourceRel = "events", excerptProjection = EventProjection.class)
+@RepositoryRestResource(path = "events", collectionResourceRel = "events", excerptProjection = EventProjection.class)
 @CrossOrigin
 @Timed
 public interface EventRepository extends Neo4jRepository<Event, Long> {
@@ -19,5 +19,5 @@ public interface EventRepository extends Neo4jRepository<Event, Long> {
     @Override
     @Timed("pac.events.getall")
     Iterable<Event> findAll();
-    
+
 }

@@ -60,8 +60,8 @@ public class SecurityConfiguration extends KeycloakWebSecurityConfigurerAdapter 
             .and()
             .csrf().disable();
     }
-    
-//    .antMatchers(HttpMethod.GET).permitAll().antMatchers("/locations/*").authenticated()
-//    .antMatchers(HttpMethod.GET).permitAll().antMatchers("/events/*").authenticated()
+
+    // .antMatchers(HttpMethod.GET).permitAll().antMatchers("/locations/*").authenticated()
+    // .antMatchers(HttpMethod.GET).permitAll().antMatchers("/events/*").authenticated()
 
 }

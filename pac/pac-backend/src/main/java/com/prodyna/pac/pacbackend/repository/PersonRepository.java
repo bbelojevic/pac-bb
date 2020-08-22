@@ -11,7 +11,7 @@ import com.prodyna.pac.pacbackend.projection.PersonProjection;
 import io.micrometer.core.annotation.Timed;
 
 @Repository
-@RepositoryRestResource(path="persons", collectionResourceRel = "persons", excerptProjection = PersonProjection.class)
+@RepositoryRestResource(path = "persons", collectionResourceRel = "persons", excerptProjection = PersonProjection.class)
 @CrossOrigin
 @Timed
 public interface PersonRepository extends Neo4jRepository<Person, Long> {
@@ -19,5 +19,5 @@ public interface PersonRepository extends Neo4jRepository<Person, Long> {
     @Override
     @Timed("pac.persons.getall")
     Iterable<Person> findAll();
-    
+
 }
