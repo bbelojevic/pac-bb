@@ -5,21 +5,28 @@
       {{message}}
     </div>
     <div class="container">
-          <table class="table">
+      <table class="table">
         <thead>
           <tr>
             <th>Name</th>
             <th>Start</th>
             <th>End</th>
             <th>Location</th>
+            <th>Topics</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="event in events" v-bind:key="event._links.self.href">
-            <td>{{event.name}}</td>
-            <td>{{formatDate(event.startDate)}}</td>
-            <td>{{formatDate(event.endDate)}}</td>
-            <td>{{event.location.name}}</td>
+          <tr v-for="event in events" v-bind:key="event.event.id">
+            <td>{{event.event.name}}</td>
+            <td>{{formatDate(event.event.startDate)}}</td>
+            <td>{{formatDate(event.event.endDate)}}</td>
+            <td>{{event.event.location.name}}</td>
+            <td>
+              <span v-for="(topic, index) in event.topics" v-bind:key="topic.id">
+                <span>{{topic.name}}</span>
+                <span v-if="index + 1 < event.topics.length">, </span>
+              </span>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -41,7 +48,7 @@ export default {
   },
   methods: {
     refreshEvents() {
-      EventDataService.retrieveAllEvents()
+      EventDataService.retrieveAllEventsAndTopics()
         .then(response => {
           this.events = response.data;
         });

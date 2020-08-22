@@ -13,6 +13,10 @@ class EventDataService {
     });
   }
 
+  retrieveAllEventsAndTopics() {
+    return axios.get(`${EVENT_API_URL}/search/getAllEventsWithTopics`);
+  }
+
 }
 
 export default new EventDataService();

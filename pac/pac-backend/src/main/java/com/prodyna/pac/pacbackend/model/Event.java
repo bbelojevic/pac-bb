@@ -8,6 +8,8 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,7 +22,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Event {
+public class Event /*extends RepresentationModel<Event>*/ {
 
     @Id
     @GeneratedValue
@@ -37,6 +39,7 @@ public class Event {
     @EqualsAndHashCode.Exclude
     private Location location;
     
+    @JsonIgnore
     @Relationship(type = "ON_EVENT", direction = Relationship.INCOMING)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
