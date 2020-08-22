@@ -63,6 +63,16 @@ const router = new Router({
         display: true
       }
     },
+    {
+      path: "/talks",
+      name: "Talks",
+      component: () => import("./components/ListTalks"),
+      meta: {
+        requireToBeAdmin: false,
+        label: "Talks",
+        display: true
+      }
+    },
   ]
 });
 
