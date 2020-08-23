@@ -13,6 +13,7 @@
             <th>End</th>
             <th>Location</th>
             <th>Topics</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -26,6 +27,9 @@
                 <span>{{topic.name}}</span>
                 <span v-if="index + 1 < event.topics.length">, </span>
               </span>
+            </td>
+            <td>
+              <router-link :to="{ name: 'Event Timeline', params: { id:event.event.id }}" tag="button" class="btn btn-success">Go to Talks</router-link>
             </td>
           </tr>
         </tbody>

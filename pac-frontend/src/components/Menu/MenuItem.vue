@@ -2,7 +2,7 @@
     <ul v-if="displayRoute">
       <div class="navbar-item">
         <div class="buttons">
-          <router-link exact-active-class="active" :to="{name: data.name}" tag="li"  class="btn btn-warning float-left">
+          <router-link exact-active-class="active" :to="{name: data.name}" tag="li" class="btn btn-warning float-left">
             <strong>{{data.meta.label || data.name}}</strong>
           </router-link>
         </div>

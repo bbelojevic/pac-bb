@@ -87,12 +87,12 @@ mvn dockerfile:push
 - or do a 
 ```
 docker login
-docker push bbelojevic/pac-backend:0.0.8-SNAPSHOT
+docker push bbelojevic/pac-backend:0.0.9-SNAPSHOT
 ```
 
 ```
 kubectl create namespace pac-backend
-kubectl -n pac-backend create deployment --image=bbelojevic/pac-backend:0.0.8-SNAPSHOT pac-backend
+kubectl -n pac-backend create deployment --image=bbelojevic/pac-backend:0.0.9-SNAPSHOT pac-backend
 kubectl -n pac-backend expose deployment pac-backend --type="NodePort" --port=8080
 kubectl -n pac-backend describe service
 minikube ip
@@ -104,7 +104,7 @@ go to http://192.168.1.6:30884/locations
 ```
 kubectl delete namespace pac-backend
 kubectl create namespace pac-backend
-kubectl -n pac-backend create deployment --image=bbelojevic/pac-backend:0.0.8-SNAPSHOT pac-backend
+kubectl -n pac-backend create deployment --image=bbelojevic/pac-backend:0.0.9-SNAPSHOT pac-backend
 
 // we should add containerPort 8080
 
@@ -224,8 +224,8 @@ npm run serve
 - add Dockerfile, go to pac-bb/pac/pac-frontend/Dockerfile (https://vuejs.org/v2/cookbook/dockerize-vuejs-app.html)
 
 ```
-PS C:\PAC\pac-source\pac-frontend> docker build -t bbelojevic/pac-frontend:0.23 .
-PS C:\PAC\pac-source\pac-frontend> docker build -t bbelojevic/pac-frontend:0.23 -t bbelojevic/pac-frontend:latest .
+PS C:\PAC\pac-source\pac-frontend> docker build -t bbelojevic/pac-frontend:0.24 .
+PS C:\PAC\pac-source\pac-frontend> docker build -t bbelojevic/pac-frontend:0.24 -t bbelojevic/pac-frontend:latest .
 // check if image is there
 docker images
 ```
@@ -234,17 +234,17 @@ docker images
 
 ```
 docker login
-docker push bbelojevic/pac-frontend:0.23
+docker push bbelojevic/pac-frontend:0.24
 docker push bbelojevic/pac-frontend:latest
 
-docker run -it -p 8080:80 --rm --name pac-frontend-1 bbelojevic/pac-frontend:0.23
+docker run -it -p 8080:80 --rm --name pac-frontend-1 bbelojevic/pac-frontend:0.24
 ```
 
 - now we want to use ingress
 
 ```
 kubectl create namespace pac-frontend
-kubectl -n pac-frontend create deployment --image=bbelojevic/pac-frontend:0.23 pac-frontend
+kubectl -n pac-frontend create deployment --image=bbelojevic/pac-frontend:0.24 pac-frontend
 
 // we should add containerPort 80
 

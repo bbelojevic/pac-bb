@@ -73,6 +73,16 @@ const router = new Router({
         display: true
       }
     },
+    {
+      path: "/events/:id",
+      name: "Event Timeline",
+      component: () => import("./components/EventTimeline"),
+      meta: {
+        requireToBeAdmin: false,
+        label: "Event Timeline",
+        display: false
+      }
+    },
   ]
 });
 

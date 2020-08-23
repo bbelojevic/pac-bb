@@ -4,11 +4,19 @@
 
     <div class="mx-auto order-0">
         <a class="navbar-brand mx-auto" href="#">CONFERENCE</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
-            <span class="navbar-toggler-icon"></span>
-        </button>
     </div>
+
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+      <div class="px-2">
+        <div class="navbar-item">
+          <div class="buttons text-nowrap">
+          <a class="btn btn-success" @click="swagger()">
+            <strong>API</strong>
+          </a>
+        </div>
+      </div>
+      </div>
+
       <div class="navbar-nav ml-auto">
         <div v-if="authenticated" class="px-5 my-auto">
           <strong class="text-warning">{{username}}</strong>
@@ -16,10 +24,10 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a v-if="authenticated" class="btn btn-warning float-right" @click="logOut">
+              <a v-if="authenticated" class="btn btn-warning float-right" @click="logOut()">
                 <strong>Log out</strong>
               </a>
-              <a v-else class="btn btn-warning float-right" @click="logIn">
+              <a v-else class="btn btn-warning float-right" @click="logIn()">
                 <strong>Log in</strong>
               </a>
             </div>
@@ -60,6 +68,9 @@ export default {
     logOut() {
         Vue.prototype.$keycloak.logoutFn();
     },
+    swagger() {
+      window.open(`${process.env.VUE_APP_BASE_URL}/api/swagger-ui/index.html`, "_blank");    
+    }
   }
 };
 </script>
