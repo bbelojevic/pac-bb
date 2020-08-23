@@ -15,13 +15,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class EventDto {
-    
+
     private Event event;
     private Set<Topic> topics;
-    
+
     public EventDto(Event event, Set<Topic> topics) {
         this.event = event;
         this.topics = topics;
     }
-    
+
 }

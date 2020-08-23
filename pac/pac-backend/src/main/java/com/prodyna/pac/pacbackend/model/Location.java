@@ -27,14 +27,14 @@ public class Location {
         this.name = name;
     }
 
-//    @Relationship(type = "IN_LOCATION", direction = Relationship.INCOMING)
-//    @ToString.Exclude
-//    @EqualsAndHashCode.Exclude
-//    private Set<Room> rooms;
-//
-//    @Relationship(type = "IN_LOCATION", direction = Relationship.INCOMING)
-//    @ToString.Exclude
-//    @EqualsAndHashCode.Exclude
-//    private Set<Event> events;
+    // @Relationship(type = "IN_LOCATION", direction = Relationship.INCOMING)
+    // @ToString.Exclude
+    // @EqualsAndHashCode.Exclude
+    // private Set<Room> rooms;
+    //
+    // @Relationship(type = "IN_LOCATION", direction = Relationship.INCOMING)
+    // @ToString.Exclude
+    // @EqualsAndHashCode.Exclude
+    // private Set<Event> events;
 
 }

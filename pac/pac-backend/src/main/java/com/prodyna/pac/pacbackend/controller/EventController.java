@@ -34,7 +34,7 @@ public class EventController {
         for (Event event : events) {
             Long eventId = event.getId();
 
-            //event.add(linkTo(Event.class).slash("events").slash(eventId).withSelfRel());
+            // event.add(linkTo(Event.class).slash("events").slash(eventId).withSelfRel());
 
             Set<Topic> topics = eventRepository.findTopicsForEvent(eventId);
 

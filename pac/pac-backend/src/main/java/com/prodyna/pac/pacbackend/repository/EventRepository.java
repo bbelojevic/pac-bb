@@ -25,11 +25,10 @@ public interface EventRepository extends Neo4jRepository<Event, Long> {
     @Override
     @Timed("pac.events.getall")
     Iterable<Event> findAll();
-    
+
     @Timed("pac.events.gettopics")
     @RestResource(exported = false)
-    //@RestResource(path="topics",rel="topics")
     @Query("match (e:Event)--(t:Talk)--(to:Topic) where id(e) = {eventId} return distinct(to)")
-    Set<Topic> findTopicsForEvent(@Param("eventId") long eventId );
+    Set<Topic> findTopicsForEvent(@Param("eventId") long eventId);
 
 }

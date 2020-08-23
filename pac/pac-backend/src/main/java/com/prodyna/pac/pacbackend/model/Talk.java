@@ -17,49 +17,49 @@ import lombok.ToString;
 
 @NodeEntity
 @Data
-@Getter 
-@Setter 
+@Getter
+@Setter
 @NoArgsConstructor
 public class Talk {
-    
+
     @Id
     @GeneratedValue
     private Long id;
 
     private String title;
-    
+
     private Date startDate;
 
     private Date endDate;
-    
-    @Relationship(type="ON_LANGUAGE")
+
+    @Relationship(type = "ON_LANGUAGE")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Language language;
 
-    @Relationship(type="IS_LEVEL")
+    @Relationship(type = "IS_LEVEL")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Level level;
-    
+
     @Relationship(type = "BY_PERSON")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Set<Person> persons;
 
-    @Relationship(type="IS_USED")
+    @Relationship(type = "IS_USED")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Set<Topic> topics;
-    
-    @Relationship(type="IN_ROOM")
+
+    @Relationship(type = "IN_ROOM")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Room room;
-    
-    @Relationship(type="ON_EVENT")
+
+    @Relationship(type = "ON_EVENT")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Event event;
-    
+
 }

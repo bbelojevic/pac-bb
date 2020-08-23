@@ -38,7 +38,7 @@ public class Event /*extends RepresentationModel<Event>*/ {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Location location;
-    
+
     @JsonIgnore
     @Relationship(type = "ON_EVENT", direction = Relationship.INCOMING)
     @ToString.Exclude

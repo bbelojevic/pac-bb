@@ -19,7 +19,7 @@ public interface EventProjection {
     Date getEndDate();
 
     Location getLocation();
-    
+
     Set<Talk> getTalks();
 
 }

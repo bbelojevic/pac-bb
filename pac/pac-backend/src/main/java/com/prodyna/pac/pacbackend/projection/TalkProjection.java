@@ -15,15 +15,15 @@ import com.prodyna.pac.pacbackend.model.Topic;
 public interface TalkProjection {
 
     String getTitle();
-    
+
     Level getLevel();
 
     Language getLanguage();
-    
+
     Set<Person> getPersons();
-  
+
     Set<Topic> getTopics();
-    
+
     Event getEvent();
-    
+
 }

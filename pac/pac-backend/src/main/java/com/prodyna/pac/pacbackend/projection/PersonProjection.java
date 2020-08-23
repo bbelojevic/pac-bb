@@ -14,7 +14,7 @@ public interface PersonProjection {
     String getName();
 
     Organization getOrganization();
-    
+
     Set<Talk> getTalks();
 
 }
