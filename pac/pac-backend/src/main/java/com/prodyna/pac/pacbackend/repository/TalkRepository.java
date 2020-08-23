@@ -19,5 +19,5 @@ public interface TalkRepository extends Neo4jRepository<Talk, Long> {
     @Override
     @Timed("pac.talks.getall")
     Iterable<Talk> findAll();
-    
+
 }

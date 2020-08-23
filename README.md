@@ -32,10 +32,42 @@ terraform plan
 terraform apply
 ```
 
-- Check dashboard
+- Check minikube dashboard
 
 ```
 minikube dashboard
+```
+
+- Setup keycloak
+
+```
+- realm: pac
+- client: pac-backend
+  - Access Type: Bearer-only
+
+
+- client: pac-frontend
+  - Access Type: Bearer-only
+  - Standard Flow Enabled: On
+  - Direct Access Grants Enabled: On
+  - Root URL: http://pac.frontend/
+  - Valid Redirect URIs: http://pac.frontend/*
+  - Base URL: http://pac.frontend/
+  - Admin URL http://pac.frontend/
+  - Web Origins: *
+  
+- roles: Admin, Manager
+- groups: Admin, Manager
+
+- users: bbelojevic
+  - Email: bbelojevic@gmail.com
+  - Role mappings: Admin
+```
+
+# Access application via 
+
+```
+http://pac.frontend
 ```
 
 # Info about database (neo4j)
@@ -77,34 +109,6 @@ helm repo - bitnami https://charts.bitnami.com/bitnami
 http://keycloak.minikube/
 
 ```
-
-- General setup
-
-```
-
-- realm: pac
-- client: pac-backend
-  - Access Type: Bearer-only
-
-
-- client: pac-frontend
-  - Access Type: Bearer-only
-  - Standard Flow Enabled: On
-  - Direct Access Grants Enabled: On
-  - Root URL: http://pac.frontend/
-  - Valid Redirect URIs: http://pac.frontend/*
-  - Base URL: http://pac.frontend/
-  - Admin URL http://pac.frontend/
-  - Web Origins: *
-  
-- roles: Admin, Manager
-- groups: Admin, Manager
-
-- users: bbelojevic
-  - Email: bbelojevic@gmail.com
-  - Role mappings: Admin
-
-``` 
 
 # Info about prometheus and grafana
 

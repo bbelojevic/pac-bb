@@ -1,5 +1,6 @@
 package com.prodyna.pac.pacbackend.projection;
 
+import java.util.Date;
 import java.util.Set;
 
 import org.springframework.data.rest.core.config.Projection;
@@ -15,6 +16,10 @@ import com.prodyna.pac.pacbackend.model.Topic;
 public interface TalkProjection {
 
     String getTitle();
+
+    Date getStartDate();
+
+    Date getEndDate();
 
     Level getLevel();
 
