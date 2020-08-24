@@ -16,7 +16,7 @@ const router = new Router({
     {
       path: "/",
       name: "Home",
-      component: () => import("./components/ListLocations"),
+      component: () => import("./components/ListEvents"),
       meta: {
         requireToBeAdmin: false,
         label: "Home", 

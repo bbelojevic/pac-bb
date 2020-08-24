@@ -89,7 +89,7 @@ http://pac.backend/api/actuator/health
 http://pac.backend/api/v2/api-docs
 http://pac.backend/api/swagger-ui/index.htm
 
-docker image - bbelojevic/pac-backend:0.0.9-SNAPSHOT
+docker image - bbelojevic/pac-backend:0.0.10-SNAPSHOT
 ```
 
 # Info about frontend (pac-frontend)

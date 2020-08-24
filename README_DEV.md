@@ -87,12 +87,12 @@ mvn dockerfile:push
 - or do a 
 ```
 docker login
-docker push bbelojevic/pac-backend:0.0.9-SNAPSHOT
+docker push bbelojevic/pac-backend:0.0.10-SNAPSHOT
 ```
 
 ```
 kubectl create namespace pac-backend
-kubectl -n pac-backend create deployment --image=bbelojevic/pac-backend:0.0.9-SNAPSHOT pac-backend
+kubectl -n pac-backend create deployment --image=bbelojevic/pac-backend:0.0.10-SNAPSHOT pac-backend
 kubectl -n pac-backend expose deployment pac-backend --type="NodePort" --port=8080
 kubectl -n pac-backend describe service
 minikube ip
@@ -104,7 +104,7 @@ go to http://192.168.1.6:30884/locations
 ```
 kubectl delete namespace pac-backend
 kubectl create namespace pac-backend
-kubectl -n pac-backend create deployment --image=bbelojevic/pac-backend:0.0.9-SNAPSHOT pac-backend
+kubectl -n pac-backend create deployment --image=bbelojevic/pac-backend:0.0.10-SNAPSHOT pac-backend
 
 // we should add containerPort 8080
 
