@@ -4,6 +4,8 @@ import router from "./routes";
 import store from "./store";
 import VueKeyCloak from "@dsb-norge/vue-keycloak-js";
 import axios from 'axios';
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
 
 Vue.config.productionTip = false
 
@@ -19,6 +21,9 @@ function tokenInterceptor() {
     return Promise.reject(error);
   });
 }
+
+// Use Material Design for Vue.js
+Vue.use(Vuetify);
 
 Vue.use(VueKeyCloak, {
   config: {
@@ -38,6 +43,7 @@ Vue.use(VueKeyCloak, {
     new Vue({
       router,
       store,
+      vuetify: new Vuetify(),
       render: (h) => h(App),
     }).$mount("#app");
   },

@@ -3,14 +3,14 @@
     <Menu />
 
     <div class="mx-auto order-0">
-        <a class="navbar-brand mx-auto" href="#">CONFERENCE</a>
+      <h3 class="navbar-brand mx-auto mb-0 h1">CONFERENCE</h3>
     </div>
 
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
       <div class="px-2">
         <div class="navbar-item">
           <div class="buttons text-nowrap">
-          <a class="btn btn-success" @click="swagger()">
+          <a class="btn btn-success" @click="swagger()" style="color:black;">
             <strong>API</strong>
           </a>
         </div>
@@ -24,10 +24,10 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a v-if="authenticated" class="btn btn-warning float-right" @click="logOut()">
+              <a v-if="authenticated" class="btn btn-warning float-right" @click="logOut()" style="color:black;">
                 <strong>Log out</strong>
               </a>
-              <a v-else class="btn btn-warning float-right" @click="logIn()">
+              <a v-else class="btn btn-warning float-right" @click="logIn()" style="color:black;">
                 <strong>Log in</strong>
               </a>
             </div>

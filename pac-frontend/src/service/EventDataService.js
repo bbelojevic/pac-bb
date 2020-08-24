@@ -17,6 +17,29 @@ class EventDataService {
     });
   }
 
+  retrieveTalksForEvent(id) {
+    return axios.get(`${EVENT_API_URL}/search/talks?eventId=${id}`, {
+      transformResponse: [function (data) {  
+        return data ? JSON.parse(data)._embedded.talks : data;  
+      }]
+    });
+  }
+
+  retrieveRoomsForEvent(id) {
+    return axios.get(`${EVENT_API_URL}/search/rooms?eventId=${id}`, {
+      transformResponse: [function (data) {  
+        var returnData = data ? JSON.parse(data)._embedded.rooms : data;
+        var transformData = [];
+
+        returnData.forEach((item) => { 
+          transformData.push(item.name);
+        });
+
+        return transformData;  
+      }]
+    });
+  }
+
   retrieveAllEventsAndTopics() {
     return axios.get(`${EVENT_API_URL}/search/getAllEventsWithTopics`);
   }

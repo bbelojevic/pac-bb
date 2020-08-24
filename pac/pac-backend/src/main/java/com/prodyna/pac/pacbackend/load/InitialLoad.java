@@ -281,7 +281,7 @@ public class InitialLoad {
         talk3.setLevel(level1);
         talk3.setEvent(event2);
         talk3.setPersons(personSet2);
-        talk3.setRoom(room1);
+        talk3.setRoom(room3);
         talk3.setTopics(topicSet1);
 
         talk3 = talkRepository.save(talk3);
@@ -294,7 +294,7 @@ public class InitialLoad {
         talk4.setLevel(level2);
         talk4.setEvent(event2);
         talk4.setPersons(personSet1);
-        talk4.setRoom(room2);
+        talk4.setRoom(room4);
         talk4.setTopics(topicSet3);
 
         talk4 = talkRepository.save(talk4);

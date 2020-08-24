@@ -9,6 +9,7 @@ import com.prodyna.pac.pacbackend.model.Event;
 import com.prodyna.pac.pacbackend.model.Language;
 import com.prodyna.pac.pacbackend.model.Level;
 import com.prodyna.pac.pacbackend.model.Person;
+import com.prodyna.pac.pacbackend.model.Room;
 import com.prodyna.pac.pacbackend.model.Talk;
 import com.prodyna.pac.pacbackend.model.Topic;
 
@@ -20,10 +21,12 @@ public interface TalkProjection {
     Date getStartDate();
 
     Date getEndDate();
+    
+    Language getLanguage();
 
     Level getLevel();
 
-    Language getLanguage();
+    Room getRoom();
 
     Set<Person> getPersons();
 
