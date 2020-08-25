@@ -1,5 +1,16 @@
 # pac-bb
 
+# About
+
+Implementation of Conferencing App which will help us to have a central place where all details about a conference - events, talks, persons a.s.o. are stored. 
+Backend and frontend are separated, solution is scalable (because while the events take place the load gets very high).
+Monitoring will ensure that bottlenecks can be detected early to prevent low performance.
+
+Solution will use:
+ 
+- docker and kubernetes, backend is headless and covers all CRUD functionalities for all entities (http://pac.backend/api/swagger-ui/index.html)
+- keycloak for authentication and secure services
+
 # How to
 
 - Start from clean environment, you should probably remove your minikube if there is one
@@ -79,6 +90,9 @@ username | password
 neo4j | pacneo4j
 
 access via http://minikube:32010/browser/, connect with bolt://minikube:32011 and username and password.
+
+MATCH (n) RETURN n;
+MATCH (n) DETACH DELETE n;
 ```
 
 # Info about backend (pac-backend)

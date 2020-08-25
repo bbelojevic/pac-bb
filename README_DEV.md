@@ -47,6 +47,10 @@ In chrome go to http://minikube:32010/ this will lead to http://minikube:32010/b
 If there is an issue with certification (neo4j helm WebSocket connection to ws:// failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED), 
 from chrome go to https://minikube:32011/, click advanced and accept certificate. After that you'll be able to connect to db.
 
+```
+MATCH (n) RETURN n;
+MATCH (n) DETACH DELETE n;
+```
 
 # pac-backend
 
