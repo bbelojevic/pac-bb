@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h3>Event Timeline for {{name}}</h3>
+    <h3>Event Timeline for {{name}} from {{formatDate(startDate)}} to {{formatDate(endDate)}}</h3>
     
     <v-row class="fill-height">
       <v-col>
@@ -93,6 +93,7 @@
 
 <script>
 import EventDataService from "../service/EventDataService";
+import moment from "moment";
 
 export default {
   name: "eventTimeline",
@@ -117,6 +118,9 @@ export default {
     },
   },
   methods: {
+    formatDate(date) {
+      return moment(date).format("DD. MM. YYYY.");
+    },
     refreshEventDetails() {
       return EventDataService.retrieveEvent(this.id).then(response => {
         this.name = response.data.name;

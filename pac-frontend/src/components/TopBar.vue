@@ -10,7 +10,7 @@
       <div class="px-2">
         <div class="navbar-item">
           <div class="buttons text-nowrap">
-          <a class="btn btn-success" @click="swagger()" style="color:black;">
+          <a class="btn btn-success" @click="swagger()">
             <strong>API</strong>
           </a>
         </div>
@@ -24,10 +24,10 @@
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a v-if="authenticated" class="btn btn-warning float-right" @click="logOut()" style="color:black;">
+              <a v-if="authenticated" class="btn btn-warning float-right" @click="logOut()">
                 <strong>Log out</strong>
               </a>
-              <a v-else class="btn btn-warning float-right" @click="logIn()" style="color:black;">
+              <a v-else class="btn btn-warning float-right" @click="logIn()">
                 <strong>Log in</strong>
               </a>
             </div>
@@ -76,5 +76,9 @@ export default {
 </script>
 
 <style scoped>
+
+  .navbar-item .buttons .btn {
+    color:black;
+  }
 
 </style>

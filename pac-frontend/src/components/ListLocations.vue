@@ -5,7 +5,8 @@
       {{message}}
     </div>
     <div class="row mb-3">
-      <router-link :to="{ name: 'Location Details', params: { id: -1 }}" tag="button" class="btn btn-success">Add</router-link>
+      <router-link v-if="authenticated" :to="{ name: 'Location Details', params: { id: -1 }}" tag="button" class="btn btn-success">Add</router-link>
+      <router-link v-else :to="{ name: 'Location Details', params: { id: -1 }}" tag="button" class="btn btn-success" disabled>Add</router-link>
     </div>
     <div class="container">
           <table class="table">
@@ -22,10 +23,12 @@
             <td>{{location.id}}</td>
             <td>{{location.name}}</td>
             <td>
-              <router-link :to="{ name: 'Location Details', params: { id: location.id }}" tag="button" class="btn btn-warning">Update</router-link>
+              <router-link v-if="authenticated" :to="{ name: 'Location Details', params: { id: location.id }}" tag="button" class="btn btn-warning">Update</router-link>
+              <router-link v-else :to="{ name: 'Location Details', params: { id: location.id }}" tag="button" class="btn btn-warning" disabled>Update</router-link>
             </td>
             <td>
-              <button class="btn btn-secondary" v-on:click="deleteLocationClicked(location.id)">Delete</button>
+              <button v-if="authenticated" class="btn btn-secondary" v-on:click="deleteLocationClicked(location.id)">Delete</button>
+              <button v-else class="btn btn-secondary" v-on:click="deleteLocationClicked(location.id)" disabled>Delete</button>
             </td>
           </tr>
         </tbody>
@@ -36,6 +39,7 @@
 
 <script>
 import LocationDataService from "../service/LocationDataService";
+import store from '../store';
 
 export default {
   name: "LocationList",
@@ -46,6 +50,14 @@ export default {
       httpStatus: null
     };
   },
+  computed: {
+    authenticated: {
+      get() {
+        return store.getters.authenticated;
+      }
+    },
+  },
+
   methods: {
     refreshLocations() {
       LocationDataService.retrieveAllLocations()
