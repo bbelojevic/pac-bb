@@ -103,7 +103,7 @@ http://pac.backend/api/actuator/health
 http://pac.backend/api/v2/api-docs
 http://pac.backend/api/swagger-ui/index.htm
 
-docker image - bbelojevic/pac-backend:0.0.10-SNAPSHOT
+docker image - bbelojevic/pac-backend:0.0.11-SNAPSHOT
 ```
 
 # Info about frontend (pac-frontend)
@@ -111,7 +111,7 @@ docker image - bbelojevic/pac-backend:0.0.10-SNAPSHOT
 ```
 http://pac.frontend
 
-docker image - bbelojevic/pac-frontend:0.24
+docker image - bbelojevic/pac-frontend:0.26
 ```
 
 # Info about keycloak

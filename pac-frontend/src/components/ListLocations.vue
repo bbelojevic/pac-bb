@@ -66,7 +66,6 @@ export default {
     deleteLocationClicked(name, selfLink) {
       LocationDataService.deleteLocationWithEventsAndTalks(selfLink).then(response => {
         this.message = `Delete of location ${name} Successful`;
-        console.log(response);
         this.httpStatus = response.data;
         this.refreshLocations();
       });
