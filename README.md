@@ -63,9 +63,9 @@ minikube dashboard
 
 ```
 - realm: pac
+
 - client: pac-backend
   - Access Type: Bearer-only
-
 
 - client: pac-frontend
   - Access Type: Bearer-only
