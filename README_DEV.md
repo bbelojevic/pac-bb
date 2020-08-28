@@ -505,7 +505,7 @@ terraform apply
 
 ```
 
-- delete all 
+# delete all 
 
 ```
 kubectl delete namespace persistence

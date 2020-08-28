@@ -158,7 +158,7 @@ admin | secret
 - add custom panel with for example pac_locations_getall_seconds_count{app="pac-backend",exception="None",instance="172.17.0.10:8080",job="kubernetes-pods",kubernetes_namespace="pac-backend",kubernetes_pod_name="pac-backend-847857cf9f-c4g86",method="GET",outcome="SUCCESS",pod_template_hash="847857cf9f",status="200",uri="/locations"}
 ```
 
-- delete all 
+# Delete all 
 
 ```
 kubectl delete namespace persistence
