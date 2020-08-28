@@ -32,7 +32,7 @@ and more:
 ```
 helm repo add equinor-charts https://equinor.github.io/helm-charts/charts/
 helm repo update
-helm -n persistence upgrade --install neo4j-community equinor-charts/neo4j-community --set acceptLicenseAgreement=yes --set neo4jPassword=pacneo4j
+helm -n persistence upgrade --install neo4j-community equinor-charts/neo4j-community --set acceptLicenseAgreement=yes --set neo4jPassword=pacneo4j //--version 1.1.1
 ```
 
 Change service to be able to access it from outside of cluster, go to pac-bb/minikube/neo4j/service.yaml
@@ -273,7 +273,7 @@ helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
 
 kubectl create namespace keycloak
-helm -n keycloak upgrade --install -f C:\PAC\pac-source\minikube\keycloak\maraidb-config.yaml keycloak-mariadb bitnami/mariadb
+helm -n keycloak upgrade --install -f C:\PAC\pac-source\minikube\keycloak\maraidb-config.yaml keycloak-mariadb bitnami/mariadb // --version 7.9.2 (28.8.2020.)
 helm -n keycloak upgrade --install -f C:\PAC\pac-source\minikube\keycloak\keycloak-config.yaml keycloak codecentric/keycloak --version 8.3.0
 kubectl -n keycloak get pods
 
@@ -348,7 +348,7 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 helm repo update
 
 kubectl create namespace monitoring
-helm -n monitoring upgrade --install -f C:\PAC\pac-source\minikube\prometheus\prometheus-config.yaml prometheus stable/prometheus
+helm -n monitoring upgrade --install -f C:\PAC\pac-source\minikube\prometheus\prometheus-config.yaml prometheus stable/prometheus // --version 11.12.0
 
 kubectl -n monitoring get pods
 
@@ -405,7 +405,7 @@ https://prometheus.io/
 // helm repo update
 
 // kubectl create namespace monitoring
-helm -n monitoring upgrade --install -f C:\PAC\pac-source\minikube\grafana\grafana-config.yaml grafana stable/grafana
+helm -n monitoring upgrade --install -f C:\PAC\pac-source\minikube\grafana\grafana-config.yaml grafana stable/grafana // --version 5.5.5
 
 kubectl -n monitoring get pods
 

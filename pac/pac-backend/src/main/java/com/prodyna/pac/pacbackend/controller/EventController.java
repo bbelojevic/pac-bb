@@ -29,14 +29,14 @@ public class EventController {
 
         List<EventDto> eventsWithTopics = new ArrayList<>();
 
-        Iterable<Event> events = eventRepository.findAll();
+        Iterable<Event> events = this.eventRepository.findAll();
 
         for (Event event : events) {
             Long eventId = event.getId();
 
             // event.add(linkTo(Event.class).slash("events").slash(eventId).withSelfRel());
 
-            Set<Topic> topics = eventRepository.findTopicsForEvent(eventId);
+            Set<Topic> topics = this.eventRepository.findTopicsForEvent(eventId);
 
             eventsWithTopics.add(new EventDto(event, topics));
         }

@@ -55,6 +55,8 @@ public class SecurityConfiguration extends KeycloakWebSecurityConfigurerAdapter 
             .authorizeRequests().antMatchers(HttpMethod.OPTIONS).permitAll()
             .antMatchers(HttpMethod.GET).permitAll()
             .antMatchers("/locations/*").hasAnyRole("Admin, Manager")
+            .antMatchers("/locations/**").hasAnyRole("Admin, Manager")
+            .antMatchers("/locations").hasAnyRole("Admin, Manager")
             .anyRequest().denyAll()
             // disable csrf because of API mode
             .and()

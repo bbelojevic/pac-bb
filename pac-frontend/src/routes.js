@@ -34,7 +34,7 @@ const router = new Router({
       }
     },
     {
-      path: "/locations/:id",
+      path: "/locations/:name",
       name: "Location Details",
       component: () => import("./components/Location"),
       meta: {
