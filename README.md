@@ -68,7 +68,7 @@ minikube dashboard
   - Access Type: Bearer-only
 
 - client: pac-frontend
-  - Access Type: Bearer-only
+  - Access Type: public
   - Standard Flow Enabled: On
   - Direct Access Grants Enabled: On
   - Root URL: http://pac.frontend/
@@ -141,7 +141,8 @@ helm repo - stable https://kubernetes-charts.storage.googleapis.com/
 
 http://prometheus.minikube/
 
-check if prometheus is working, go to http://prometheus.minikube/targets and check for "kubernetes-pods" and there should be our endpoint similar to http://172.17.0.11:8080api/actuator/prometheus  
+- check if prometheus is working, go to http://prometheus.minikube/targets and check for "kubernetes-pods" and there should be our endpoint similar to http://172.17.0.11:8080api/actuator/prometheus
+- graph expression example: pac_locations_getall_seconds_count
 ```
 
 ```
@@ -155,7 +156,7 @@ admin | secret
 
 - add datasource Prometheus with url http://prometheus-server.monitoring.svc.cluster.local
 - example: go to Dashboards -> Manage menu item and click Import to add the dashboard with ID: 1621
-- add custom panel with for example pac_locations_getall_seconds_count{app="pac-backend",exception="None",instance="172.17.0.10:8080",job="kubernetes-pods",kubernetes_namespace="pac-backend",kubernetes_pod_name="pac-backend-847857cf9f-c4g86",method="GET",outcome="SUCCESS",pod_template_hash="847857cf9f",status="200",uri="/locations"}
+- add custom panel with for example pac_locations_getall_seconds_count{... copy value from prometheus ...}
 ```
 
 # Delete all 
