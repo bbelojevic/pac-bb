@@ -365,7 +365,7 @@ kubectl -n monitoring get pods
 // go to http://prometheus.minikube/
 
 // check if prometheus is working, go to http://prometheus.minikube/targets and check for "kubernetes-pods" and there should be our endpoint http://172.17.0.11:8080api/actuator/prometheus  
-// pac_locations_getall_seconds_count{app="pac-backend",exception="None",instance="172.17.0.10:8080",job="kubernetes-pods",kubernetes_namespace="pac-backend",kubernetes_pod_name="pac-backend-847857cf9f-c4g86",method="GET",outcome="SUCCESS",pod_template_hash="847857cf9f",status="200",uri="/locations"}
+// pac_locations_getall_seconds_count{app_kubernetes_io_instance="pac-backend",app_kubernetes_io_name="pac-backend",exception="None",instance="172.17.0.19:8080",job="kubernetes-pods",kubernetes_namespace="pac-backend",kubernetes_pod_name="pac-backend-6bcb59687f-mr2dr",method="GET",outcome="SUCCESS",pod_template_hash="6bcb59687f",status="200",uri="/locations"}
 
 Release "prometheus" does not exist. Installing it now.
 NAME: prometheus
@@ -471,7 +471,7 @@ PS C:\PAC\pac-source>
 - example: go to Dashboards -> Manage menu item and click Import to add the dashboard with ID: 1621
 - add panel with 
 ```
-pac_locations_getall_seconds_count{app="pac-backend",exception="None",instance="172.17.0.10:8080",job="kubernetes-pods",kubernetes_namespace="pac-backend",kubernetes_pod_name="pac-backend-847857cf9f-c4g86",method="GET",outcome="SUCCESS",pod_template_hash="847857cf9f",status="200",uri="/locations"}
+pac_locations_getall_seconds_count{app_kubernetes_io_instance="pac-backend",app_kubernetes_io_name="pac-backend",exception="None",instance="172.17.0.19:8080",job="kubernetes-pods",kubernetes_namespace="pac-backend",kubernetes_pod_name="pac-backend-6bcb59687f-mr2dr",method="GET",outcome="SUCCESS",pod_template_hash="6bcb59687f",status="200",uri="/locations"}
 ```
 
 - helm charts for pac-backend and pac-frontend
