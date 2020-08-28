@@ -504,3 +504,15 @@ terraform plan
 terraform apply
 
 ```
+
+- delete all 
+
+```
+kubectl delete namespace persistence
+kubectl delete namespace pac-backend
+kubectl delete namespace pac-frontend
+kubectl delete namespace keycloak
+kubectl delete namespace monitoring
+
+kubectl delete clusterrolebinding pac-backend
+```

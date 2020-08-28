@@ -34,6 +34,16 @@ memory: 6000
 <minikube ip> minikube keycloak.minikube pac.backend pac.frontend grafana.minikube prometheus.minikube
 ```
 
+- Install helm and run these commands
+
+```
+helm repo add equinor-charts https://equinor.github.io/helm-charts/charts/
+helm repo add codecentric https://codecentric.github.io/helm-charts
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo update
+```
+
 - Go to pac-bb/terraform/terraform/ and run these commands
 
 ```
@@ -146,4 +156,16 @@ admin | secret
 - add datasource Prometheus with url http://prometheus-server.monitoring.svc.cluster.local
 - example: go to Dashboards -> Manage menu item and click Import to add the dashboard with ID: 1621
 - add custom panel with for example pac_locations_getall_seconds_count{app="pac-backend",exception="None",instance="172.17.0.10:8080",job="kubernetes-pods",kubernetes_namespace="pac-backend",kubernetes_pod_name="pac-backend-847857cf9f-c4g86",method="GET",outcome="SUCCESS",pod_template_hash="847857cf9f",status="200",uri="/locations"}
+```
+
+- delete all 
+
+```
+kubectl delete namespace persistence
+kubectl delete namespace pac-backend
+kubectl delete namespace pac-frontend
+kubectl delete namespace keycloak
+kubectl delete namespace monitoring
+
+kubectl delete clusterrolebinding pac-backend
 ```
