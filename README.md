@@ -11,6 +11,8 @@ Solution will use:
 - docker and kubernetes, backend is headless and covers all CRUD functionalities for all entities (http://pac.backend/api/swagger-ui/index.html)
 - keycloak for authentication and secure services
 
+![image_2020_10_23T14_11_37_003Z](https://user-images.githubusercontent.com/19586444/97015797-48528f00-154c-11eb-852c-b403ec4d57e9.png)
+
 # How to
 
 - Start from clean environment, you should probably remove your minikube if there is one
