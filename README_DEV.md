@@ -367,7 +367,8 @@ http://minikube:32020
 - we will install prometheus and grafana so we can monitor our API calls
 
 ```
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+~~ helm repo add stable https://kubernetes-charts.storage.googleapis.com/ ~~ // https://helm.sh/blog/new-location-stable-incubator-charts/
+helm repo add stable https://charts.helm.sh/stable
 helm repo update
 
 kubectl create namespace monitoring
@@ -424,7 +425,7 @@ https://prometheus.io/
 ```
 
 ```
-// helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+// helm repo add stable https://charts.helm.sh/stable
 // helm repo update
 
 // kubectl create namespace monitoring
