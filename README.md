@@ -80,10 +80,10 @@ minikube dashboard
   - Web Origins: *
   
 - roles: Admin, Manager
-- groups: Admin, Manager
 
 - users: bbelojevic
   - Email: bbelojevic@gmail.com
+  - Set password
   - Role mappings: Admin
 ```
 
@@ -148,7 +148,7 @@ http://prometheus.minikube/
 ```
 
 ```
-// helm repo - stable https://kubernetes-charts.storage.googleapis.com/
+// helm repo - stable https://charts.helm.sh/stable
 
 http://grafana.minikube/
 
