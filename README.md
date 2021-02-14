@@ -42,7 +42,7 @@ memory: 6000
 helm repo add equinor-charts https://equinor.github.io/helm-charts/charts/
 helm repo add codecentric https://codecentric.github.io/helm-charts
 helm repo add bitnami https://charts.bitnami.com/bitnami
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo add stable https://charts.helm.sh/stable
 helm repo update
 ```
 
