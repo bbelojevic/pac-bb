@@ -61,7 +61,7 @@ terraform apply
 minikube dashboard
 ```
 
-- Setup keycloak http://keycloak.minikube/
+- Setup keycloak http://keycloak.minikube/ (admin credentials: keycloak | keycloak)
 
 ```
 - realm: pac
