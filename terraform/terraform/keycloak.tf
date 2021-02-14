@@ -18,6 +18,7 @@ resource "kubernetes_namespace" "keycloak" {
 resource "helm_release" "keycloak-mariadb" {
   name = "keycloak-mariadb"
   chart = "mariadb"
+  version = "7.9.2"
   repository = local.helm_repository_bitnami
   namespace = kubernetes_namespace.keycloak.metadata[0].name
 

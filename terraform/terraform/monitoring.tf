@@ -10,6 +10,7 @@ resource "kubernetes_namespace" "monitoring" {
 resource "helm_release" "prometheus" {
   repository = local.helm_repository_stable
   chart = "prometheus"
+  version = "11.12.0"
   namespace = kubernetes_namespace.monitoring.metadata[0].name
   name = "prometheus"
 
@@ -25,6 +26,7 @@ resource "helm_release" "prometheus" {
 resource "helm_release" "grafana" {
   repository = local.helm_repository_stable
   chart = "grafana"
+  version = "5.5.5"
   namespace = kubernetes_namespace.monitoring.metadata[0].name
   name = "grafana"
 

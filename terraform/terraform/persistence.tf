@@ -13,6 +13,7 @@ resource "kubernetes_namespace" "persistence" {
 resource "helm_release" "neo4j-community" {
   name = "neo4j-community"
   chart = "neo4j-community"
+  version = "1.1.1"
   repository = local.helm_repository_equinor
   namespace = kubernetes_namespace.persistence.metadata[0].name
 
