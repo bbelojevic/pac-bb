@@ -11,7 +11,7 @@
     "@dsb-norge/vue-keycloak-js": "^1.1.2",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "sass": "^1.26.9",
     "sass-loader": "^8.0.2",
     "vue": "^2.6.11",
